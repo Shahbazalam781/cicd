@@ -22,7 +22,7 @@ def health():
 def info():
     return jsonify({
         "application": "DevOps CI/CD Pipeline",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "environment": "development"
     }), 200
 
