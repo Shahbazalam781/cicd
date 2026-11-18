@@ -63,7 +63,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # AWS OIDC authentication
+      # AWS OIDC authentication 
       - name: Verify AWS Role ARN Variable
         env:
           ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
