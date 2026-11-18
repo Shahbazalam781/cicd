@@ -85,7 +85,7 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: us-east-1
           audience: sts.amazonaws.com
-
+ 
       # Authenticate Docker with AWS ECR
       - name: Login to Amazon ECR
         id: login-ecr
