@@ -64,11 +64,27 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # AWS OIDC authentication
+      - name: Verify AWS Role ARN Variable
+        env:
+          ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
+        run: |
+          if [ -z "$ROLE_ARN" ]; then
+            echo "::error::AWS_ROLE_ARN variable is empty or unavailable"
+            exit 1
+          fi
+
+          if [[ "$ROLE_ARN" != arn:aws:iam::*:role/GitHubActions-ECR-Push-Role ]]; then
+            echo "::error::Unexpected IAM role ARN format"
+            exit 1
+          fi
+
+          echo "AWS role ARN variable is configured correctly."
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: us-east-1
+          audience: sts.amazonaws.com
 
       # Authenticate Docker with AWS ECR
       - name: Login to Amazon ECR
