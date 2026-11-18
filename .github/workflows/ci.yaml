@@ -64,19 +64,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Verify AWS Role ARN
-        env:
-          ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
-        run: |
-          if [ -z "$ROLE_ARN" ]; then
-            echo "::error::AWS_ROLE_ARN is missing or empty"
-            exit 1
-          fi
-
-          echo "AWS_ROLE_ARN is configured:"
-          echo "$ROLE_ARN"
-      
+   
         
       # Authenticate with AWS using GitHub OIDC
       - name: Configure AWS Credentials
