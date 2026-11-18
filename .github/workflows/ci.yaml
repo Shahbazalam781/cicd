@@ -44,7 +44,7 @@ jobs:
 
     needs: test
 
-    # Publish only when code is pushed to main.
+    # Publish only when code is pushed to main. 
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
