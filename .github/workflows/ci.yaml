@@ -77,7 +77,7 @@ jobs:
           echo "AWS_ROLE_ARN is configured:"
           echo "$ROLE_ARN"
       
-      
+        
       # Authenticate with AWS using GitHub OIDC
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
