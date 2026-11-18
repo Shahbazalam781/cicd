@@ -82,7 +82,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          role-to-assume: arn:aws:iam::491245116668:role/GitHubActions-ECR-Push-Role
           aws-region: us-east-1
           audience: sts.amazonaws.com
  
@@ -91,6 +91,9 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Verify AWS Identity
+        run: |
+          aws sts get-caller-identity
       # Build once and publish to both registries
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
