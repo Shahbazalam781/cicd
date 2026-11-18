@@ -65,7 +65,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
    
-        
+      - name: Debug GitHub OIDC Context
+        env:
+          REPOSITORY: ${{ github.repository }}
+          REF: ${{ github.ref }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          echo "Repository: $REPOSITORY"
+          echo "Branch: $REF"
+          echo "Event: $EVENT"  
       # Authenticate with AWS using GitHub OIDC
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
