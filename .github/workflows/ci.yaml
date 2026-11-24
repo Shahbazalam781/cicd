@@ -1,4 +1,4 @@
-```yaml
+
 name: Flask CI and Multi-Registry Publishing
 
 on:
@@ -215,4 +215,3 @@ jobs:
             --namespace flask-devops
 
           echo "Minikube deployment completed successfully."
-```
