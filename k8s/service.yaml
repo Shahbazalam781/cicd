@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: flask-devops-service
+  namespace: flask-devops
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app: flask-devops-app
+
+  ports:
+    - name: 5000
+      protocol: TCP
+      port: 
+      targetPort: 5000
